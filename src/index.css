@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+    transition: 0.5s;
+}
+
+label {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+label span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    color: #777;
+    transition: .5s;
+}
+
+body.dark label span {
+    color: #aaa;
+}
+
+label .action {
+    position: relative;
+}
+
+label .action input {
+    appearance: none;
+}
+
+label .action i {
+    position: relative;
+    width: 42px;
+    height: 25px;
+    background-color: #ddd;
+    border-radius: 15px;
+    transition: .5s;
+}
+
+body.dark label .action i {
+    background-color: #666;
+}
+
+
+label .action input:checked~i {
+    background-color: #cecece;
+    transition: .5s;
+}
+
+label .action i::before {
+    content: '';
+    position: absolute;
+    top: 2.5px;
+    left: 2.5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+    transition: .5s;
+}
+
+label .action input:checked~i::before {
+    left: calc(100% - 23px);
+}
