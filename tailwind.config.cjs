@@ -32,6 +32,12 @@ module.exports = {
         textDarkMode: 'hsla(0, 0%, 94%, 1)',
         textLightMode: 'hsla(360, 0%, 9%, 1)'
       },
+      boxShadow: {
+        element: '-5px -5px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.35), inset -5px -5px 15px rgba(255, 255, 255, 0.1),inset 5px 5px 15px rgba(0, 0, 0, 0.35)'
+      },
+      transitionDuration: {
+        400: "0.4s"
+      }
     },
   },
   plugins: [],
