@@ -13,12 +13,8 @@ const App = () => {
             <Routes>
                 <Route path="/*" element={<Home />} />
                 <Route path="/create" element={<Create />} />
-                <Route path="/edit" element={<Edit />} />
+                <Route path="/edit/:id" element={<Edit />} />
             </Routes>
-
-            <NavLink to="/create" className="absolute bottom-20 right-20 p-4 rounded-full bg-mainBg dark:bg-[#ddd] shadow-element cursor-pointer">
-                <MdAdd className="text-[28px] text-white dark:text-textLightMode" />
-            </NavLink>
         </div>
     )
 }

@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { StyleMode } from './';
 
+import { AiOutlineSearch } from 'react-icons/ai'
+
 const Header = () => {
     const [mode, setMode] = useState('light');
+    const [search, setSearch] = useState(false);
 
     useEffect(() => {
         if (mode === 'dark') {
