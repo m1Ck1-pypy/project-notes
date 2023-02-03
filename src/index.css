@@ -84,16 +84,23 @@ label .action input:checked~i::before {
     grid-auto-flow: dense;
     grid-auto-rows: 200px;
     grid-gap: 20px;
+    transition: all 0.4s ease-in-out;
 }
 
 .notes__item {
     position: relative;
-    background-color: #666;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 10px;
+    /* background-color: rgb(154, 33, 224); */
 }
 
 .notes__item:nth-child(2n - 1) {
     grid-column: span 1;
     grid-row: span 2;
+    font-size: 26px;
 }
 
 @media (max-width: 768px) {
@@ -103,8 +110,14 @@ label .action input:checked~i::before {
         grid-gap: 10px;
     }
 
+    .notes__item {
+        font-size: 14px;
+        /* background-color: rgb(154, 33, 224); */
+    }
+
     .notes__item:nth-child(2n - 1) {
         grid-column: span 1;
         grid-row: span 2;
+        font-size: 20px;
     }
 }

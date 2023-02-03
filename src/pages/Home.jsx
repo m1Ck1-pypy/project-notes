@@ -3,7 +3,7 @@ import { AiOutlineSearch } from 'react-icons/ai'
 import { MdAdd, MdOutlineClear } from 'react-icons/md'
 import { NavLink } from 'react-router-dom';
 
-import { notes_examples } from '../utils/data';
+import { notes_examples, colorsRandom } from '../utils/data';
 
 import { NoteItem } from '../components';
 
@@ -32,7 +32,7 @@ const Home = () => {
             </div>
             <div className="notes__container">
                 {notes_examples.map((item, index) => (
-                    <NoteItem key={index} id={item.id} />
+                    <NoteItem key={index} id={item.id} item={item} color={colorsRandom()} />
                 ))}
             </div>
 

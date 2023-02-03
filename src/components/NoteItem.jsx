@@ -2,12 +2,18 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 
+const NoteItem = ({ id, item, color }) => {
 
-const NoteItem = ({ id }) => {
     const navigate = useNavigate()
+
     return (
-        <div className="notes__item" onClick={() => navigate(`/edit/${id}`)}>
-            NoteItem
+        <div
+            style={{ backgroundColor: `${color}` }}
+            className="notes__item  text-textLightMode"
+            onClick={() => navigate(`/edit/${id}`)}
+        >
+            <div className="font-semibold tracking-1">{item.title}</div>
+            <div className="text-sm">{item.date}</div>
         </div>
     )
 }
