@@ -5,19 +5,42 @@ import { StyleMode } from './';
 import { AiOutlineSearch } from 'react-icons/ai'
 
 const Header = () => {
-    const [mode, setMode] = useState('light');
+    const [mode, setMode] = useState(localStorage.getItem("theme"));
+
     const [search, setSearch] = useState(false);
+
+    const element = document.documentElement;
+    const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    // console.log(darkQuery)
+
+    function onWindowMatch() {
+        if (localStorage.theme === 'dark' || (!("theme" in localStorage) && darkQuery.matches)) {
+            element.classList.add("dark")
+        } else {
+            element.classList.remove("dark")
+        }
+    }
+
+    onWindowMatch();
 
     useEffect(() => {
         if (mode === 'dark') {
-            document.documentElement.classList.add('dark');
+            element.classList.add('dark');
+            localStorage.setItem('theme', 'dark')
         } else {
-            document.documentElement.classList.remove('dark');
+            element.classList.remove('dark');
+            localStorage.removeItem('theme')
         }
     }, [mode])
 
     const handleMode = () => {
         setMode(mode === 'dark' ? 'light' : 'dark')
+        if (mode === 'dark') {
+            localStorage.removeItem('mode')
+        } else {
+            localStorage.setItem('mode', 'active')
+        }
     }
 
     return (

@@ -8,12 +8,12 @@ import { notes_examples, colorsRandom } from '../utils/data';
 import { NoteItem } from '../components';
 
 
-const Home = () => {
+const Home = ({ notes }) => {
     const [searchValue, setSearchValue] = useState('');
 
     return (
         <div className="w-full relative px-10 py-8 flex flex-col gap-10">
-            <div className="relative w-full md:w-600 flex items-center justify-between gap-2 border border-textLightMode dark:border-white rounded-full transition-all duration-400 ease-in-out px-4 py-2">
+            <div className="relative w-full md:w-600 flex items-center justify-between gap-2 border border-borderLightMode dark:border-borderDarkMode rounded-full transition-all duration-400 ease-in-out px-4 py-2">
                 <div className="mr-2">
                     <AiOutlineSearch className="text-2xl text-textLightMode dark:text-textDarkMode" />
                 </div>
@@ -31,7 +31,7 @@ const Home = () => {
                 )}
             </div>
             <div className="notes__container">
-                {notes_examples.map((item, index) => (
+                {notes.map((item, index) => (
                     <NoteItem key={index} id={item.id} item={item} color={colorsRandom()} />
                 ))}
             </div>
