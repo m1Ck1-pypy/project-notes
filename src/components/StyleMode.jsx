@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { HiMoon } from 'react-icons/hi';
 import { WiSolarEclipse } from 'react-icons/wi';
 

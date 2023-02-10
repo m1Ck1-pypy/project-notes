@@ -2,13 +2,13 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 
-const NoteItem = ({ id, item, color }) => {
+const NoteItem = ({ id, item }) => {
 
     const navigate = useNavigate()
 
     return (
         <div
-            style={{ backgroundColor: `${color}` }}
+            style={{ backgroundColor: `${item.color}` }}
             className="notes__item  text-textLightMode transition-all duration-300 ease-in-out cursor-pointer"
             onClick={() => navigate(`/edit/${id}`)}
         >

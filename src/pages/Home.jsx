@@ -1,15 +1,23 @@
-import React, { useState } from 'react'
-import { AiOutlineSearch } from 'react-icons/ai'
+import React, { useEffect, useState } from 'react'
+import { AiOutlineSearch } from 'react-icons/ai';
 import { MdAdd, MdOutlineClear } from 'react-icons/md'
 import { NavLink } from 'react-router-dom';
 
-import { notes_examples, colorsRandom } from '../utils/data';
-
-import { NoteItem } from '../components';
+import { NotesBoard } from '../components';
 
 
 const Home = ({ notes }) => {
     const [searchValue, setSearchValue] = useState('');
+    const [filteredNotes, setFilteredNotes] = useState(notes);
+
+    const handleSearch = () => {
+        setFilteredNotes(notes.filter((data) =>
+            data.title.includes(searchValue) || data.details.includes(searchValue))
+        )
+    }
+
+    useEffect(handleSearch, [searchValue])
+
 
     return (
         <div className="w-full relative px-10 py-8 flex flex-col gap-10">
@@ -30,12 +38,8 @@ const Home = ({ notes }) => {
                     />
                 )}
             </div>
-            <div className="notes__container">
-                {notes.map((item, index) => (
-                    <NoteItem key={index} id={item.id} item={item} color={colorsRandom()} />
-                ))}
-            </div>
 
+            <NotesBoard notes={filteredNotes} />
 
             <NavLink to="/create" className="fixed md:bottom-16 md:right-16 bottom-7 right-7 p-4 rounded-full bg-mainBg dark:bg-[#ddd] shadow-element cursor-pointer transition-all duration-400 ease-in-out">
                 <MdAdd className="text-[28px] text-white dark:text-textLightMode" />

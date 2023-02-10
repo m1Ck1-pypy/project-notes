@@ -7,10 +7,16 @@ import useCreateDate from '../hooks/useCreateDate';
 const Create = ({ setNotes }) => {
     const [title, setTitle] = useState('');
     const [details, setDetails] = useState('');
+
     const date = useCreateDate();
 
     const navigate = useNavigate();
-    // console.log(date)
+
+    const colorsRandom = () => {
+        const colors = ['#ff3d9b', '#b700ff', '#0073ff', '#00ff5e', '#ffdf3d', '#ff3d3d'];
+
+        return colors[Math.floor(Math.random() * colors.length)]
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -20,11 +26,10 @@ const Create = ({ setNotes }) => {
                 id: uuid(),
                 title,
                 details,
-                date
+                date,
+                color: colorsRandom()
             }
-
             setNotes(prevNotes => [note, ...prevNotes])
-            // console.log(note)
             navigate('/')
         }
     }
