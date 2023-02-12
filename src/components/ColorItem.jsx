@@ -15,4 +15,4 @@ const ColorItem = ({ id, color, colorCheck, setColorCheck }) => {
     )
 }
 
-export default ColorItem
+export default ColorItem;
