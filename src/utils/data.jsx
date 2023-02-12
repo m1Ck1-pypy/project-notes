@@ -99,11 +99,12 @@ export const notes_examples = [
     },
 ];
 
+export const colors = ['#ff3d9b', '#b700ff', '#0073ff', '#00eaff', '#00ff5e', '#ffdf3d', '#ff3d3d'];
 
-export const colorsRandom = () => {
-    const colors = ['#ff3d9b', '#b700ff', '#0073ff', '#00ff5e', '#ffdf3d', '#ff3d3d'];
+// export const colors = () => {
+//     const colors = ['#ff3d9b', '#b700ff', '#0073ff', '#00ff5e', '#ffdf3d', '#ff3d3d'];
 
-    return colors[Math.floor(Math.random() * colors.length)]
-}
+//     return colors[Math.floor(Math.random() * colors.length)]
+// }
 
 

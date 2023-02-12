@@ -2,21 +2,18 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 
+import { ColorItem } from '../components';
 import useCreateDate from '../hooks/useCreateDate';
+import { colors } from '../utils/data';
 
 const Create = ({ setNotes }) => {
     const [title, setTitle] = useState('');
     const [details, setDetails] = useState('');
+    const [colorCheck, setColorCheck] = useState(0);
 
     const date = useCreateDate();
 
     const navigate = useNavigate();
-
-    const colorsRandom = () => {
-        const colors = ['#ff3d9b', '#b700ff', '#0073ff', '#00ff5e', '#ffdf3d', '#ff3d3d'];
-
-        return colors[Math.floor(Math.random() * colors.length)]
-    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -27,12 +24,16 @@ const Create = ({ setNotes }) => {
                 title,
                 details,
                 date,
-                color: colorsRandom()
+                color: colors[colorCheck]
             }
             setNotes(prevNotes => [note, ...prevNotes])
             navigate('/')
         }
-    }
+    };
+
+    const handleColor = (id) => {
+        setColorCheck(id)
+    };
 
     return (
         <div className="w-full relative px-10 py-8 flex flex-col gap-10">
@@ -46,6 +47,7 @@ const Create = ({ setNotes }) => {
                     value={title}
                 />
             </div>
+
             <div className="w-full flex items-center border-b border-borderLightMode dark:border-borderDarkMode pb-1">
                 <textarea
                     className="w-full bg-transparent min-h-300 outline-none text-lg text-textLightMode dark:text-textDarkMode resize-none scrollbar-thumb-black dark:scrollbar-thumb-white scrollbar-thumb-rounded-md scrollbar-thin"
@@ -54,6 +56,16 @@ const Create = ({ setNotes }) => {
                     value={details}
                 />
             </div>
+
+            <div className="w-fit flex flex-col flex-wrap gap-2">
+                <p className="text-textLightMode dark:text-textDarkMode text-sm lg:text-lg font-medium">Background Note:</p>
+                <div className="flex flex-wrap gap-3 items-center justify-between">
+                    {colors && colors.map((item, index) => (
+                        <ColorItem key={index} id={index} color={item} colorCheck={colorCheck} setColorCheck={handleColor} />
+                    ))}
+                </div>
+            </div>
+
             <div className="w-full flex items-center justify-end">
                 <button
                     type='button'
